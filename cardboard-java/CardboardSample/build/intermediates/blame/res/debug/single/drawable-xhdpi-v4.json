@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/supasorn/vrhack/cardboard-java/CardboardSample/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_launcher.png",
+        "source": "/home/supasorn/vrhack/cardboard-java/CardboardSample/src/main/res/drawable-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/supasorn/Softwares/cardboard-java/CardboardSample/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_launcher.png",
+        "source": "/home/supasorn/Softwares/cardboard-java/CardboardSample/src/main/res/drawable-xhdpi/ic_launcher.png"
+    }
+]

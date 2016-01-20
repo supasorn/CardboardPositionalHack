@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/home/supasorn/vrhack/cardboard-java/CardboardSample/build/intermediates/res/merged/debug/raw/light_vertex.shader",
+        "source": "/home/supasorn/vrhack/cardboard-java/CardboardSample/src/main/res/raw/light_vertex.shader"
+    },
+    {
+        "merged": "/home/supasorn/Softwares/cardboard-java/CardboardSample/build/intermediates/res/merged/debug/raw/passthrough_fragment.shader",
+        "source": "/home/supasorn/Softwares/cardboard-java/CardboardSample/src/main/res/raw/passthrough_fragment.shader"
+    },
+    {
+        "merged": "/home/supasorn/vrhack/cardboard-java/CardboardSample/build/intermediates/res/merged/debug/raw/grid_fragment.shader",
+        "source": "/home/supasorn/vrhack/cardboard-java/CardboardSample/src/main/res/raw/grid_fragment.shader"
+    },
+    {
+        "merged": "/home/supasorn/vrhack/cardboard-java/CardboardSample/build/intermediates/res/merged/debug/raw/passthrough_fragment.shader",
+        "source": "/home/supasorn/vrhack/cardboard-java/CardboardSample/src/main/res/raw/passthrough_fragment.shader"
+    },
+    {
+        "merged": "/home/supasorn/Softwares/cardboard-java/CardboardSample/build/intermediates/res/merged/debug/raw/light_vertex.shader",
+        "source": "/home/supasorn/Softwares/cardboard-java/CardboardSample/src/main/res/raw/light_vertex.shader"
+    },
+    {
+        "merged": "/home/supasorn/Softwares/cardboard-java/CardboardSample/build/intermediates/res/merged/debug/raw/grid_fragment.shader",
+        "source": "/home/supasorn/Softwares/cardboard-java/CardboardSample/src/main/res/raw/grid_fragment.shader"
+    }
+]

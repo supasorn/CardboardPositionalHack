@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/supasorn/vrhack/cardboard-java/CardboardSample/libs/cardboard.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="32c8e30df7bdcbf982603f70aeaf89e207f44219">
+        <dex dex="/home/supasorn/vrhack/cardboard-java/CardboardSample/build/intermediates/pre-dexed/debug/cardboard_9af9611576afd347ebd35424ec0e61d6114d4526.jar" />
+    </item>
+    <item
+        jar="/home/supasorn/vrhack/cardboard-java/CardboardSample/libs/audio.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="74fcb5c43eb6843ec691a1a1013a4d38eac2de41">
+        <dex dex="/home/supasorn/vrhack/cardboard-java/CardboardSample/build/intermediates/pre-dexed/debug/audio_aa4390346c626d1bc4bfb520bacdeb7348533ead.jar" />
+    </item>
+
+</items>

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/supasorn/vrhack/cardboard-java/CardboardSample/build/intermediates/res/merged/debug/layout/common_ui.xml",
+        "source": "/home/supasorn/vrhack/cardboard-java/CardboardSample/src/main/res/layout/common_ui.xml"
+    },
+    {
+        "merged": "/home/supasorn/Softwares/cardboard-java/CardboardSample/build/intermediates/res/merged/debug/layout/common_ui.xml",
+        "source": "/home/supasorn/Softwares/cardboard-java/CardboardSample/src/main/res/layout/common_ui.xml"
+    }
+]
