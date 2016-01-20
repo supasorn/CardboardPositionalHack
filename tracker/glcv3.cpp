@@ -28,24 +28,22 @@ float camDat [3][3] = {
   {FCL, 0, 0},
   {0, FCL*ASPECT, 0},
   {0, 0, 1}};
+//float camDat [3][3] = {
+  //{5.3756, 0, 346.7956},
+  //{0, 5.3800, 238.8574},
+  //{0, 0, 1}};
 
 float p3Dat[4][3] = {
   {-1, -1, ZD},
   {1,  -1, ZD},
   {1,   1, ZD},
   {-1,  1, ZD}};
-
-float p2Dat[4][2] = {
-  {-0.375, -0.5 },
-  {0.375, -0.5},
-  {0.375, 0.5 },
-  {-0.375, 0.5 }};
-  
-float p2_Dat[4][2] = {
-  {0, 0},
-  {PATTERNSIZE-1, 0},
-  {PATTERNSIZE-1, PATTERNSIZE-1},
-  {0, PATTERNSIZE-1}};
+#define HW 0.049
+//float p3Dat[4][3] = {
+  //{-HW, -HW, ZD},
+  //{HW,  -HW, ZD},
+  //{HW,   HW, ZD},
+  //{-HW,  HW, ZD}};
 
 VideoCapture capture; // open the default camera
 GLuint cameraImage;
@@ -71,14 +69,19 @@ void loadTexture_Ipl(Mat &image, GLuint *text) {
  
   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image.cols, image.rows, 0,  GL_BGR, GL_UNSIGNED_BYTE, &image.at<Vec3b>(0, 0)[0]);
 }
+
+void as(Mat &a, Mat b) {
+  a = Mat(b.size(), CV_64F);
+  forMat (i, j, a) {
+    a.at<double>(i, j) = b.at<float>(i, j);
+  }
+}
 void findExtrinsic() {
   Mat dist = Mat::zeros(4, 1, CV_32FC1);
-  //solvePnP(p3, p2, cam, dist, R, T, 0, CV_EPNP);
   solvePnP(p3, p2, cam, dist, R, T, 0);
+  //solvePnP(p3, p2, cam, dist, R, T, 0, CV_EPNP);
+  //solvePnP(p3, p2, cam, dist, R, T, 1);
 
-  //setMat(p2, (float*)p2Dat);
-  //cvFindExtrinsicCameraParams2(p3, p2, cam, NULL, R, T);
-  
   Rodrigues(R, rotMat);
   
   for(int i = 0; i < 3; i++) {
@@ -93,6 +96,7 @@ void findExtrinsic() {
   forMat (i, j, tr) {
     tr.at<float>(i, j) = tMat.at<float>(j, i);
   }
+  cout << T << endl;
 }
 inline int bRange(int a, int l, int h) {
   if (a > h) a = h;
@@ -233,9 +237,12 @@ void loop() {
   for (int i = 0; i < 4; i++) {
     circle(frame, corners[i], 2, Scalar(0, 0, 255));
   }
-  for(int i=0;i<4;i++) {
-    p2.at<float>(i, 0) = 1 - corners[3-i].x * 2.0 / frame.cols;
-    p2.at<float>(i, 1) = -(corners[3-i].y * 2.0 / frame.rows -1);
+  for(int i = 0; i < 4; i++) {
+    p2.at<Vec2f>(i, 0)[0] = 1 - corners[3-i].x * 2.0 / frame.cols;
+    p2.at<Vec2f>(i, 0)[1] = -(corners[3-i].y * 2.0 / frame.rows -1);
+    
+    //p2.at<Vec2f>(i, 0)[0] = corners[3-i].x;
+    //p2.at<Vec2f>(i, 0)[1] = corners[3-i].y;
   }
 
   //drawContours(frame, contours2, id, color, 2, 8, hierarchy, 0, Point() );
@@ -345,6 +352,14 @@ void display(void) {
     0,  FCL*ASPECT,  0, 0,
     0, 0, 1, 1,
     0,  0,  -1, 0 };
+
+  //{5.3756, 0, 346.7956},
+  //{0, 5.3800, 238.8574},
+  //GLfloat a[16] = {
+    //5.3756,  0,  0, 0,
+    //0,  5.38,  0, 0,
+    //0, 0, 1, 1,
+    //0,  0,  -1, 0 };
   glMultMatrixf(a);
   
   glMatrixMode(GL_MODELVIEW);
@@ -373,6 +388,13 @@ void display(void) {
     glVertex3f(1, -1, ZD);
     glVertex3f(-1, 1, ZD);
     glVertex3f(1, 1, ZD);
+    glEnd();
+
+    glBegin(GL_TRIANGLE_STRIP);
+    glVertex3f(-HW, -HW, ZD);
+    glVertex3f(HW, -HW, ZD);
+    glVertex3f(-HW, HW, ZD);
+    glVertex3f(HW, HW, ZD);
     glEnd();
   
     glColor4f(0,1.0,0,0.5);
@@ -427,8 +449,8 @@ int main(int argc, char **argv) {
 
   corners.resize(4);
   cam = Mat(3, 3, CV_32FC1, &camDat);
-  p3 = Mat(4, 3, CV_32FC1, &p3Dat);
-  p2 = Mat(4, 2, CV_32FC1, &p2_Dat);
+  p3 = Mat(4, 1, CV_32FC3, &p3Dat);
+  p2 = Mat::zeros(4, 1, CV_32FC2);
  
   R = Mat(3, 1, CV_32FC1);
   T = Mat(3, 1, CV_32FC1);
